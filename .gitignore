@@ -13,8 +13,11 @@ dist-ssr
 *.local
 
 # Editor directories and files
+<<<<<<< HEAD
 .vscode/*
 !.vscode/extensions.json
+=======
+>>>>>>> 085dd514a182fa4504af1c2b26bf63b2911d5862
 .idea
 .DS_Store
 *.suo
@@ -22,6 +25,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+<<<<<<< HEAD
 
 # Logs
 logs
@@ -45,3 +49,5 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+=======
+>>>>>>> 085dd514a182fa4504af1c2b26bf63b2911d5862
