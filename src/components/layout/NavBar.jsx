@@ -15,8 +15,6 @@ import DeveloperDropDown from "./navBarSections/DeveloperDropDown";
 import IndividualsDropdown from "./navBarSections/IndividualsDropdown";
 import InstitutionsDropdown from "./navBarSections/InstitutionsDropdown";
 
-// MobileMenuLink shape (runtime not enforced)
-
 const NavBar = () => {
   const [activeItem, setActiveItem] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -438,7 +436,6 @@ const NavBar = () => {
         </nav>
       )}
 
-      {/* Mobile Menu Overlay */}
       {mobileMenuOpen && (
         <button
           type="button"
@@ -451,12 +448,8 @@ const NavBar = () => {
         />
       )}
 
-      {/* Mobile Menu Modal */}
       {mobileMenuOpen && (
         <div className="fixed left-0 right-0 top-20 z-50 bg-white lg:hidden h-[calc(100vh-80px)] flex flex-col">
-          {/* Header is now minimal - back arrow moved to main navbar */}
-
-          {/* Content */}
           <div className="overflow-y-auto flex-1">
             {mobileMenuLevel === "main" && (
               <div className="flex flex-col">
@@ -508,9 +501,7 @@ const NavBar = () => {
         </div>
       )}
 
-      {/* Main Navbar */}
       <nav className="flex items-center justify-between h-16 md:h-20 border-b border-gray-300 relative z-50 px-4 sm:px-6 md:px-8 lg:px-12">
-        {/* Logo / Back Arrow */}
         <div className="flex-shrink-0">
           {mobileMenuOpen && mobileMenuLevel === "category" ? (
             <button
@@ -533,7 +524,6 @@ const NavBar = () => {
           )}
         </div>
 
-        {/* Desktop Navigation */}
         <div className="hidden lg:flex flex-1 justify-center">
           <ul className="flex flex-row gap-2 font-semibold text-sm">
             {navSections.map((item) => (
@@ -549,7 +539,6 @@ const NavBar = () => {
           </ul>
         </div>
 
-        {/* Right Section Icons and Buttons */}
         <div className="flex flex-row gap-2 md:gap-3 items-center">
           <button
             type="button"
@@ -581,7 +570,6 @@ const NavBar = () => {
             Sign Up
           </button>
 
-          {/* Mobile Menu Toggle */}
           <button
             type="button"
             className="lg:hidden p-2 text-gray-800 hover:bg-gray-100 rounded-full transition-colors"

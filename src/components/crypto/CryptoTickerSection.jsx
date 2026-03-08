@@ -1,11 +1,39 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
+interface Crypto {
+  id: string;
+  name: string;
+  symbol: string;
+  image: string;
+  current_price: number;
+  price_change_percentage_24h: number;
+}
+
+interface CoinGeckoMarket {
+  id: string;
+  name: string;
+  symbol: string;
+  image: string;
+  current_price: number;
+  price_change_percentage_24h: number | null;
+}
+
+interface TrendingItem {
+  item: {
+    id: string;
+    name: string;
+    symbol: string;
+    large: string;
+    price_btc: number;
+  };
+}
+
 const CryptoTickerSection = () => {
   const [activeTab, setActiveTab] = useState("tradable");
-  const [cryptos, setCryptos] = useState([]);
+  const [cryptos, setCryptos] = useState<Crypto[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchCryptos = async () => {
@@ -29,27 +57,31 @@ const CryptoTickerSection = () => {
         const response = await axios.get(url);
 
         if (activeTab === "gainers") {
-          const sorted = response.data
-            .filter((c) => c.price_change_percentage_24h != null)
+          const sorted = (response.data as CoinGeckoMarket[])
+            .filter(
+              (c: CoinGeckoMarket) => c.price_change_percentage_24h != null,
+            )
             .sort(
-              (a, b) =>
+              (a: CoinGeckoMarket, b: CoinGeckoMarket) =>
                 (b.price_change_percentage_24h || 0) -
                 (a.price_change_percentage_24h || 0),
             )
-            .slice(0, 6);
+            .slice(0, 6) as Crypto[];
           setCryptos(sorted);
         } else if (activeTab === "new") {
-          const transformed = response.data.coins.slice(0, 6).map((item) => ({
-            id: item.item.id,
-            name: item.item.name,
-            symbol: item.item.symbol,
-            image: item.item.large,
-            current_price: item.item.price_btc,
-            price_change_percentage_24h: 0,
-          }));
+          const transformed = (response.data.coins as TrendingItem[])
+            .slice(0, 6)
+            .map((item: TrendingItem) => ({
+              id: item.item.id,
+              name: item.item.name,
+              symbol: item.item.symbol,
+              image: item.item.large,
+              current_price: item.item.price_btc,
+              price_change_percentage_24h: 0,
+            }));
           setCryptos(transformed);
         } else {
-          setCryptos(response.data);
+          setCryptos(response.data as Crypto[]);
         }
       } catch (err) {
         console.error("Error fetching cryptos:", err);
@@ -63,13 +95,13 @@ const CryptoTickerSection = () => {
   }, [activeTab]);
 
   return (
-    <div className="w-full bg-gray-50 py-8 sm:py-12 md:py-16 lg:py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
+    <div className="w-full bg-gray-50 py-8 sm:py-10 md:py-12 lg:py-16">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 lg:px-10">
         {/* Main Container - Responsive Flex */}
-        <div className="flex flex-col lg:flex-row gap-6 sm:gap-8 md:gap-10 lg:gap-12 items-start lg:items-center">
+        <div className="flex flex-col lg:flex-row gap-6 sm:gap-8 md:gap-10 items-start lg:items-center">
           {/* Left Content Section */}
-          <div className="w-full lg:w-1/2 flex flex-col gap-3 sm:gap-4 md:gap-5">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold leading-tight">
+          <div className="w-full lg:w-1/2 flex flex-col gap-4 sm:gap-5 md:gap-6">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold leading-tight">
               Explore crypto like Bitcoin, Ethereum, and Dogecoin.
             </h2>
 
@@ -80,7 +112,7 @@ const CryptoTickerSection = () => {
 
             <button
               type="button"
-              className="py-3 sm:py-4 md:py-5 px-5 sm:px-6 md:px-8 w-fit rounded-full bg-black text-white font-bold text-sm sm:text-base md:text-lg hover:bg-gray-800 transition-colors shadow-lg"
+              className="py-2.5 sm:py-3 px-5 sm:px-6 w-fit rounded-full bg-black text-white font-bold text-sm sm:text-base hover:bg-gray-800 transition-colors shadow-lg"
             >
               See more assets
             </button>
@@ -88,9 +120,9 @@ const CryptoTickerSection = () => {
 
           {/* Right Crypto Card Section */}
           <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
-            <div className="w-full max-w-sm md:max-w-md lg:max-w-xl bg-black rounded-3xl md:rounded-[45px] p-4 sm:p-6 md:p-8 lg:p-10 shadow-xl">
+            <div className="w-full max-w-sm md:max-w-md lg:max-w-xl bg-black rounded-3xl p-4 sm:p-6 md:p-8 shadow-xl">
               {/* Tab Navigation */}
-              <div className="flex gap-3 sm:gap-4 md:gap-6 mb-6 md:mb-8 overflow-x-auto pb-2">
+              <div className="flex gap-4 md:gap-6 mb-6 md:mb-8 overflow-x-auto pb-2">
                 {["tradable", "gainers", "new"].map((tab) => (
                   <button
                     key={tab}

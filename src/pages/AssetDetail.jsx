@@ -1,7 +1,7 @@
-import { useParams } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 
 export default function AssetDetail() {
-  const { id } = useParams<{ id: string }>();
+  const { id } = useParams();
 
   return (
     <div className="min-h-screen bg-white">
@@ -12,7 +12,8 @@ export default function AssetDetail() {
         <div className="bg-gray-50 rounded-lg p-8">
           <h2 className="text-2xl font-bold mb-4">Coming Soon</h2>
           <p className="text-gray-600">
-            This page will display detailed information about the selected cryptocurrency asset.
+            This page will display detailed information about the selected
+            cryptocurrency asset.
           </p>
         </div>
       </div>

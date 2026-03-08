@@ -1,9 +1,10 @@
-import React from "react";
 import NavBar from "../components/layout/NavBar";
 import HeroSection from "../components/crypto/HeroSection";
 import CryptoTickerSection from "../components/crypto/CryptoTickerSection";
 import GridSection from "../components/crypto/GridSection";
 import Footer from "../components/layout/Footer";
+import LearnMoreSection from "../components/crypto/LearnMoreSection";
+import HomeSignUpSection from "../components/crypto/HomeSignUpSection";
 
 /**
  * Home page
@@ -18,7 +19,7 @@ import Footer from "../components/layout/Footer";
  * This file intentionally keeps layout concerns minimal — the visual
  * styling lives inside each component so they can be reused on other pages.
  */
-const Home: React.FC = () => {
+const Home = () => {
   return (
     <div className="min-h-screen bg-white text-gray-900">
       {/* Header / Navigation (always visible) */}
@@ -38,9 +39,11 @@ const Home: React.FC = () => {
           <CryptoTickerSection />
         </section>
 
-        {/* Feature grid/content sections */}
-        <section aria-labelledby="features-heading" className="mt-8">
-          <GridSection />
+        <section>
+          <LearnMoreSection />
+        </section>
+        <section>
+          <HomeSignUpSection />
         </section>
       </main>
 

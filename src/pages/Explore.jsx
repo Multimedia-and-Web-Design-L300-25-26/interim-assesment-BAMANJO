@@ -1,25 +1,52 @@
-import React from "react";
 import NavBar from "../components/layout/NavBar";
 import Footer from "../components/layout/Footer";
 
-type Asset = {
-  id: string;
-  name: string;
-  symbol: string;
-  price: string;
-  change?: string;
-};
-
-const sampleAssets: Asset[] = [
-  { id: "bitcoin", name: "Bitcoin", symbol: "BTC", price: "$33,683.80", change: "+1.38%" },
-  { id: "ethereum", name: "Ethereum", symbol: "ETH", price: "$1,810.42", change: "-0.24%" },
-  { id: "solana", name: "Solana", symbol: "SOL", price: "$22.14", change: "+3.12%" },
-  { id: "ripple", name: "XRP", symbol: "XRP", price: "$0.52", change: "-0.82%" },
-  { id: "cardano", name: "Cardano", symbol: "ADA", price: "$0.42", change: "+0.60%" },
-  { id: "dogecoin", name: "Dogecoin", symbol: "DOGE", price: "$0.08", change: "-2.11%" },
+const sampleAssets = [
+  {
+    id: "bitcoin",
+    name: "Bitcoin",
+    symbol: "BTC",
+    price: "$33,683.80",
+    change: "+1.38%",
+  },
+  {
+    id: "ethereum",
+    name: "Ethereum",
+    symbol: "ETH",
+    price: "$1,810.42",
+    change: "-0.24%",
+  },
+  {
+    id: "solana",
+    name: "Solana",
+    symbol: "SOL",
+    price: "$22.14",
+    change: "+3.12%",
+  },
+  {
+    id: "ripple",
+    name: "XRP",
+    symbol: "XRP",
+    price: "$0.52",
+    change: "-0.82%",
+  },
+  {
+    id: "cardano",
+    name: "Cardano",
+    symbol: "ADA",
+    price: "$0.42",
+    change: "+0.60%",
+  },
+  {
+    id: "dogecoin",
+    name: "Dogecoin",
+    symbol: "DOGE",
+    price: "$0.08",
+    change: "-2.11%",
+  },
 ];
 
-const Explore: React.FC = () => {
+const Explore = () => {
   return (
     <div className="min-h-screen bg-white text-gray-900">
       <header>
@@ -30,8 +57,9 @@ const Explore: React.FC = () => {
         <div className="mb-6">
           <h1 className="text-2xl sm:text-3xl font-serif font-bold">Explore</h1>
           <p className="text-gray-600 mt-2">
-            Browse assets, markets, and discover opportunities. This page is a lightweight
-            placeholder to show structure — replace with live data or more detailed UI as needed.
+            Browse assets, markets, and discover opportunities. This page is a
+            lightweight placeholder to show structure — replace with live data
+            or more detailed UI as needed.
           </p>
         </div>
 
@@ -80,7 +108,9 @@ const Explore: React.FC = () => {
                 className="flex items-center gap-4 p-4 border border-gray-100 rounded-lg hover:shadow-sm transition-shadow bg-white"
               >
                 <div className="w-12 h-12 rounded-lg bg-gray-100 flex items-center justify-center shrink-0">
-                  <span className="text-sm font-bold text-gray-700">{a.symbol[0]}</span>
+                  <span className="text-sm font-bold text-gray-700">
+                    {a.symbol[0]}
+                  </span>
                 </div>
 
                 <div className="flex-1 min-w-0">
@@ -93,7 +123,9 @@ const Explore: React.FC = () => {
                       <p className="font-medium text-sm">{a.price}</p>
                       <p
                         className={`text-xs mt-1 ${
-                          a.change && a.change.startsWith("+") ? "text-green-600" : "text-red-600"
+                          a.change && a.change.startsWith("+")
+                            ? "text-green-600"
+                            : "text-red-600"
                         }`}
                       >
                         {a.change ?? "—"}

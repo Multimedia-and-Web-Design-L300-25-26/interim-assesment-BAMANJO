@@ -9,11 +9,11 @@ export default function Footer() {
           {/* Logo - hidden on mobile, shown on tablet+ */}
           <div className="hidden sm:flex shrink-0 pt-1">
             <svg
+              title="Coinbase Logo"
               width="44"
               height="44"
               viewBox="0 0 40 40"
               fill="none"
-              title="Coinbase Logo"
             >
               <circle cx="20" cy="20" r="20" fill="#0052FF" />
               <path
@@ -43,13 +43,13 @@ export default function Footer() {
           {/* Grid: 1 column on mobile, 2 on tablet, 4 on desktop */}
           <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-12">
             {/* Column 1: Company + Learn */}
-            <div className="flex flex-col gap-6 sm:gap-8">
+            <div className="flex flex-col gap-5 sm:gap-8">
               {/* Company */}
               <div>
                 <h3 className="font-bold text-gray-900 mb-3 sm:mb-4 text-sm">
                   Company
                 </h3>
-                <ul className="space-y-1.5 sm:space-y-2">
+                <ul className="space-y-0.5 sm:space-y-1">
                   <li>
                     <Link
                       to="/"
@@ -154,7 +154,7 @@ export default function Footer() {
                 <h4 className="font-bold text-gray-900 mb-3 sm:mb-4 text-sm">
                   Learn
                 </h4>
-                <ul className="space-y-1.5 sm:space-y-2">
+                <ul className="space-y-0.5 sm:space-y-1">
                   <li>
                     <a
                       href="#"
@@ -270,7 +270,7 @@ export default function Footer() {
                 <h3 className="font-bold text-gray-900 mb-3 sm:mb-4 text-sm">
                   Individuals
                 </h3>
-                <ul className="space-y-1.5 sm:space-y-2">
+                <ul className="space-y-0.5 sm:space-y-1">
                   <li>
                     <a
                       href="#"
@@ -319,7 +319,7 @@ export default function Footer() {
                 <h4 className="font-bold text-gray-900 mb-3 sm:mb-4 text-sm">
                   Businesses
                 </h4>
-                <ul className="space-y-1.5 sm:space-y-2">
+                <ul className="space-y-0.5 sm:space-y-1">
                   <li>
                     <a
                       href="#"
@@ -368,7 +368,7 @@ export default function Footer() {
                 <h4 className="font-bold text-gray-900 mb-3 sm:mb-4 text-sm">
                   Institutions
                 </h4>
-                <ul className="space-y-1.5 sm:space-y-2">
+                <ul className="space-y-0.5 sm:space-y-1">
                   <li>
                     <a
                       href="#"
@@ -426,7 +426,7 @@ export default function Footer() {
               <h3 className="font-bold text-gray-900 mb-3 sm:mb-4 text-sm">
                 Developers
               </h3>
-              <ul className="space-y-1.5 sm:space-y-2">
+              <ul className="space-y-0.5 sm:space-y-1">
                 <li>
                   <a
                     href="#"
@@ -597,7 +597,7 @@ export default function Footer() {
                 <h3 className="font-bold text-gray-900 mb-3 sm:mb-4 text-sm">
                   Support
                 </h3>
-                <ul className="space-y-1.5 sm:space-y-2">
+                <ul className="space-y-0.5 sm:space-y-1">
                   <li>
                     <a
                       href="#"
@@ -678,7 +678,7 @@ export default function Footer() {
                 <h4 className="font-bold text-gray-900 mb-3 sm:mb-4 text-sm">
                   Asset prices
                 </h4>
-                <ul className="space-y-1.5 sm:space-y-2">
+                <ul className="space-y-0.5 sm:space-y-1">
                   <li>
                     <a
                       href="#"
@@ -719,7 +719,7 @@ export default function Footer() {
                 <h4 className="font-bold text-gray-900 mb-3 sm:mb-4 text-sm">
                   Stock prices
                 </h4>
-                <ul className="space-y-1.5 sm:space-y-2">
+                <ul className="space-y-0.5 sm:space-y-1">
                   <li>
                     <a
                       href="#"
